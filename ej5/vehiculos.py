@@ -19,13 +19,16 @@ class Coche(Vehiculo):
 
 class Bicicleta(Vehiculo):
     def __init__(self, color, ruedas, tipo):
-        if tipo.lower() != "urbana" or tipo.lower() != "deportiva":
+        if tipo.lower() == "urbana" or tipo.lower() == "deportiva":
             super().__init__(color, ruedas)
             self.tipo = tipo
         else:
-            print("Tipo de bicicleta no válido")
+            self.nottipo = tipo
     def __str__(self):
-        return super().__str__() + ", Tipo: {}".format(self.tipo)
+        try:
+            return super().__str__() + ", Tipo: {}".format(self.tipo)
+        except AttributeError:
+            return "Tipo de bicicleta no válido (" + self.nottipo + ")"
 
 class Camioneta(Coche):
     def __init__(self, color, ruedas, velocidad, cilindrada, carga):
@@ -41,18 +44,19 @@ class Motocicleta(Bicicleta):
             self.velocidad = velocidad
             self.cilindrada = cilindrada
         else:
-            print("Tipo de motocicleta no válido")
+            self.nottipo = tipo
     def __str__(self):
-        if self.cilindrada and self.velocidad:
+        try:
             return super().__str__() + ", Velocidad: {}, Cilindrada: {}".format(self.velocidad, self.cilindrada)
-
+        except AttributeError:
+            return "Tipo de motocicleta no válido (" + self.nottipo + ")"
 
 if __name__ == "__main__":
     coche = Coche("Rojo", 4, 210, 2500)
     print(coche)
-    bicicleta = Bicicleta("Rojo", 2, "Urbanoide")
+    bicicleta = Bicicleta("Rojo", 2, "Urbana")
     print(bicicleta)
     camioneta = Camioneta("Rojo", 4, 210, 2500, 3000)
     print(camioneta)
-    motocicleta = Motocicleta("Rojo", 2, "Deportivoide", 200, 1000)
+    motocicleta = Motocicleta("Rojo", 2, "Deportiva", 200, 1000)
     print(motocicleta)
