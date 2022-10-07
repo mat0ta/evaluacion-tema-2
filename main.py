@@ -1,6 +1,8 @@
 import os
 import sys
 import pathlib
+
+from ej5.vehiculos import Vehiculo
 for i in range(5):
     sys.path.append(str(pathlib.Path().resolve()) + '/ej' + str(i + 1))
     print('Path del ejercicio ' + str(i + 1) + ' añadido.')
@@ -31,17 +33,22 @@ if __name__ == "__main__":
             codigo = Codigo(eleccion)
             codigo.iniciar()
         elif eleccion == 5:
-            _input = input('Introduce el tipo de vehiculo que quieres crear:\n1. Coche.\n2. Bicicleta.\n3. Camioneta.\n4. Motocicleta.\nEleccion: ')
-            if _input == '1':
-                coche = Coche(input('Introduce el color del coche: '), 4, int(input('Introduce la velocidad maxima del coche: ')), int(input('Introduce la cilindrada del coche: ')))
-                print(coche)
-            elif _input == '2':
-                bicicleta = Bicicleta(input('Introduce el color de la bicicleta: '), 2, input('Introduce el tipo de bicicleta (Urbana/Deportiva): '))
-                print(bicicleta)
-            elif _input == '3':
-                camioneta = Camioneta(input('Introduce el color de la camioneta: '), 4, input('Introduce la velocidad maxima de la camioneta: '), input('Introduce la cilindrada del coche: '), input('Introduce la carga maxima de la camioneta: '))
-                print(camioneta)
-            elif _input == '4':
-                motocicleta = Motocicleta(input('Introduce el color de la motocicleta: '), 2, input('Introduce el tipo de motocicleta (Urbana/Deportiva): ') , input('Introduce la velocidad maxima de la motocicleta: '), input('Introduce la cilindrada de la motocicleta: '))
-                print(motocicleta)
-            print('\n')
+            _input = 0
+            while _input != 6:
+                _input = input('Introduce el tipo de vehiculo que quieres crear:\n1. Coche.\n2. Bicicleta.\n3. Camioneta.\n4. Motocicleta.\n5. Contar ruedas\n6. Salir.\nEleccion: ')
+                if _input == '1':
+                    coche = Coche(input('Introduce el color del coche: '), 4, int(input('Introduce la velocidad maxima del coche: ')), int(input('Introduce la cilindrada del coche: ')))
+                    print(coche)
+                elif _input == '2':
+                    bicicleta = Bicicleta(input('Introduce el color de la bicicleta: '), 2, input('Introduce el tipo de bicicleta (Urbana/Deportiva): '))
+                    print(bicicleta)
+                elif _input == '3':
+                    camioneta = Camioneta(input('Introduce el color de la camioneta: '), 4, input('Introduce la velocidad maxima de la camioneta: '), input('Introduce la cilindrada del coche: '), input('Introduce la carga maxima de la camioneta: '))
+                    print(camioneta)
+                elif _input == '4':
+                    motocicleta = Motocicleta(input('Introduce el color de la motocicleta: '), 2, input('Introduce el tipo de motocicleta (Urbana/Deportiva): ') , input('Introduce la velocidad maxima de la motocicleta: '), input('Introduce la cilindrada de la motocicleta: '))
+                    print(motocicleta)
+                elif _input == '5':
+                    ruedas = input('Introduce el numero de ruedas: ')
+                    Vehiculo.catalogar(int(ruedas))
+                print('\n')
