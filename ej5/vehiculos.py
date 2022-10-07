@@ -6,7 +6,8 @@ class Vehiculo():
         self.color = color
         self.ruedas = ruedas
     def __str__(self):
-        return "Color: {}, Ruedas: {}".format(self.color, self.ruedas)
+        if self.ruedas and self.color:
+            return "Color: {}, Ruedas: {}".format(self.color, self.ruedas)
 
 class Coche(Vehiculo):
     def __init__(self, color, ruedas, velocidad, cilindrada):
@@ -18,10 +19,11 @@ class Coche(Vehiculo):
 
 class Bicicleta(Vehiculo):
     def __init__(self, color, ruedas, tipo):
-        super().__init__(color, ruedas)
-        self.tipo = tipo
-        if self.tipo.lower() != "urbana" or self.tipo.lower() != "deportiva":
-            print("Tipo de " + type(object).__name__ + " no válido")
+        if tipo.lower() != "urbana" or tipo.lower() != "deportiva":
+            super().__init__(color, ruedas)
+            self.tipo = tipo
+        else:
+            print("Tipo de bicicleta no válido")
     def __str__(self):
         return super().__str__() + ", Tipo: {}".format(self.tipo)
 
@@ -34,19 +36,23 @@ class Camioneta(Coche):
     
 class Motocicleta(Bicicleta):
     def __init__(self, color, ruedas, tipo, velocidad, cilindrada):
-        super().__init__(color, ruedas, tipo)
-        self.velocidad = velocidad
-        self.cilindrada = cilindrada
+        if tipo.lower() == "urbana" or tipo.lower() == "deportiva":
+            super().__init__(color, ruedas, tipo)
+            self.velocidad = velocidad
+            self.cilindrada = cilindrada
+        else:
+            print("Tipo de motocicleta no válido")
     def __str__(self):
-        return super().__str__() + ", Velocidad: {}, Cilindrada: {}".format(self.velocidad, self.cilindrada)
+        if self.cilindrada and self.velocidad:
+            return super().__str__() + ", Velocidad: {}, Cilindrada: {}".format(self.velocidad, self.cilindrada)
 
 
 if __name__ == "__main__":
-    coche = Coche("Rojo", 4, 160, 1600)
+    coche = Coche("Rojo", 4, 210, 2500)
     print(coche)
-    bicicleta = Bicicleta("Verde", 2, "Urbana")
+    bicicleta = Bicicleta("Rojo", 2, "Urbanoide")
     print(bicicleta)
-    camioneta = Camioneta("Azul", 4, 180, 2000, 1000)
+    camioneta = Camioneta("Rojo", 4, 210, 2500, 3000)
     print(camioneta)
-    motocicleta = Motocicleta("Negra", 2, "Deportiva", 200, 1000)
+    motocicleta = Motocicleta("Rojo", 2, "Deportivoide", 200, 1000)
     print(motocicleta)
