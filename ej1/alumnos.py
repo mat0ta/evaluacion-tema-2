@@ -14,6 +14,3 @@ class Alumno():
             print('El alumno {} con una calificacion de {} esta Suspenso'.format(self.nombre, self.nota))
         else:
             print('El alumno {} con una calificacion de {} esta Aprobado'.format(self.nombre, self.nota))
-
-if __name__ == "__main__":
-    Alumno('Juan', 5)

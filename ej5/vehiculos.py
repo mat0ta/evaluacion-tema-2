@@ -15,7 +15,7 @@ class Coche(Vehiculo):
         self.velocidad = velocidad
         self.cilindrada = cilindrada
     def __str__(self):
-        return super().__str__() + ", Velocidad: {}, Cilindrada: {}".format(self.velocidad, self.cilindrada)
+        return super().__str__() + ", Velocidad: {} km/h, Cilindrada: {} cc".format(self.velocidad, self.cilindrada)
 
 class Bicicleta(Vehiculo):
     def __init__(self, color, ruedas, tipo):
@@ -35,7 +35,7 @@ class Camioneta(Coche):
         super().__init__(color, ruedas, velocidad, cilindrada)
         self.carga = carga
     def __str__(self):
-        return super().__str__() + ", Carga: {}".format(self.carga)
+        return super().__str__() + ", Carga: {} kg".format(self.carga)
     
 class Motocicleta(Bicicleta):
     def __init__(self, color, ruedas, tipo, velocidad, cilindrada):
@@ -47,16 +47,6 @@ class Motocicleta(Bicicleta):
             self.nottipo = tipo
     def __str__(self):
         try:
-            return super().__str__() + ", Velocidad: {}, Cilindrada: {}".format(self.velocidad, self.cilindrada)
+            return super().__str__() + ", Velocidad: {} km/h, Cilindrada: {} cc".format(self.velocidad, self.cilindrada)
         except AttributeError:
             return "Tipo de motocicleta no válido (" + self.nottipo + ")"
-
-if __name__ == "__main__":
-    coche = Coche("Rojo", 4, 210, 2500)
-    print(coche)
-    bicicleta = Bicicleta("Rojo", 2, "Urbana")
-    print(bicicleta)
-    camioneta = Camioneta("Rojo", 4, 210, 2500, 3000)
-    print(camioneta)
-    motocicleta = Motocicleta("Rojo", 2, "Deportiva", 200, 1000)
-    print(motocicleta)

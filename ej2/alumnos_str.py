@@ -15,7 +15,3 @@ class Alumno_str():
             return 'Aprobado'
     def __str__(self):
         return 'El alumno {} con una calificacion de {} esta {}'.format(self.nombre, self.nota, self.calificacion())
-
-if __name__ == "__main__":
-    alumno = Alumno_str('Juan', 5)
-    print(alumno)
