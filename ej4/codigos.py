@@ -25,12 +25,11 @@ class Codigo():
                 resultado = "2" + 10
             except TypeError:
                 print('No se puede sumar un string a un numero.')
-
-if __name__ == "__main__":
-    eleccion = 0
-    while eleccion != 5:
-        eleccion = int(input('Elige una opción:\n1. Division entre 0.\n2. Indice de lista inexistente.\n3. Clave de diccionario inexistente.\n4. Suma de string y numero.\n5. Salir del programa.\nEleccion:'))
-        os.system('cls')
-        codigo = Codigo(eleccion)
-        codigo.comprobar_excepciones()
-        print('\n')
+    def iniciar(self):
+        eleccion = 0
+        while eleccion != 5:
+            eleccion = int(input('Elige una opción:\n1. Division entre 0.\n2. Indice de lista inexistente.\n3. Clave de diccionario inexistente.\n4. Suma de string y numero.\n5. Salir del programa.\nEleccion:'))
+            os.system('cls')
+            codigo = Codigo(eleccion)
+            codigo.comprobar_excepciones()
+            print('\n')
