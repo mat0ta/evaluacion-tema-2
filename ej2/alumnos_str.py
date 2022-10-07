@@ -1,4 +1,4 @@
-class Alumno():
+class Alumno_str():
     def __init__(self, nombre, nota):
         self.nombre = nombre
         self.nota = nota
@@ -8,12 +8,14 @@ class Alumno():
             print('Nota inválida. Se asignará 0')
             self.nota = 0
         print('Alumno creado con éxito.\n Nombre: {}\n Nota: {}'.format(self.nombre, self.nota))
-        self.calificacion()
     def calificacion(self):
         if self.nota < 5:
-            print('El alumno {} con una calificacion de {} esta Suspenso'.format(self.nombre, self.nota))
+            return 'Suspenso'
         else:
-            print('El alumno {} con una calificacion de {} esta Aprobado'.format(self.nombre, self.nota))
+            return 'Aprobado'
+    def __str__(self):
+        return 'El alumno {} con una calificacion de {} esta {}'.format(self.nombre, self.nota, self.calificacion())
 
 if __name__ == "__main__":
-    Alumno('Juan', 5)
+    alumno = Alumno_str('Juan', 5)
+    print(alumno)
